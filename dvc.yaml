@@ -1,0 +1,21 @@
+stages: 
+  prepare:
+    cmd:  python code/0_prepare.py
+    deps:
+      - code/0_prepare.py
+    outs: 
+      - data/prepared
+  train:
+    cmd: python code/1_train.py
+    deps:
+      - code/1_train.py
+      - data/prepared
+    outs:
+      - data/model
+  evaluate:
+    cmd: python code/2_evaluate.py
+    deps:
+      - code/2_evaluate.py
+      - data/model
+    outs:
+      - data/evaluation
